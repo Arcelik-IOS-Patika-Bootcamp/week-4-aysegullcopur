@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import SVGKit
 
 class CoinsTableViewController: UIViewController {
     
