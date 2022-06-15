@@ -14,10 +14,13 @@ class CoinTableModel {
         string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc"
     )!
     
+    // CryptoCurrencyInfo includes coin objects.
     lazy var currencies: [CryptoCurrencyInfo] = []
+    //filteredCurrencies is filtered by using SearchBar's text.
     lazy var filteredCurrencies: [CryptoCurrencyInfo] = []
     private lazy var searchText = ""
     
+    // This function fetch and decode the data. 
     func fetchCurrencies(completion: @escaping ([CryptoCurrencyInfo]?, Error?) -> Void) {
         //Give the session a task.
         let task = urlSession.dataTask(
@@ -38,6 +41,7 @@ class CoinTableModel {
         task.resume()
     }
     
+    // This function filters the data.
     func updateSearchText(_ searchText: String) {
         self.searchText = searchText
         if searchText.isEmpty {
